@@ -2,7 +2,8 @@
   <div class="total-orders">
     <common-card title="累计订单量" value="23,545,656">
       <template>
-        <div id="total-orders-chart" :style="{width:'100%',height:'100%'}" />
+        <v-chart :options="getOptions()" />
+        <!-- <div id="total-orders-chart" :style="{width:'100%',height:'100%'}" /> -->
       </template>
       <template v-slot:footer>
         <span>昨日订单量 </span>
@@ -17,13 +18,13 @@ import commonCardMixins from '../../mixins/commonCardMixins'
 export default {
   mixins: [commonCardMixins],
   data () {
-    return {}
+    return {
+    }
   },
-  mounted () {
-    const chartDom = document.getElementById('total-orders-chart')
-    const chart = this.$echarts.init(chartDom)
-    chart.setOption({
-      grid: {
+  methods: {
+    getOptions () {
+      return {
+          grid: {
         top: 0,
         bottom: 0,
         left: 0,
@@ -53,7 +54,44 @@ export default {
           smooth: true
         }
       ]
-    })
+      }
+    }
+  },
+  mounted () {
+    // const chartDom = document.getElementById('total-orders-chart')
+    // const chart = this.$echarts.init(chartDom)
+    // chart.setOption({
+    //   grid: {
+    //     top: 0,
+    //     bottom: 0,
+    //     left: 0,
+    //     right: 0
+    //   },
+    //   xAxis: {
+    //     type: 'category',
+    //     show: false,
+    //     boundaryGap: false // x轴两边不留空白
+    //   },
+    //   yAxis: {
+    //     show: false
+    //   },
+    //   series: [
+    //     {
+    //       type: 'line',
+    //       data: [620, 432, 220, 534, 790, 430, 220, 320, 532, 320, 834, 690, 530, 220, 620],
+    //       areaStyle: {
+    //         color: 'purple'
+    //       },
+    //       lineStyle: {
+    //         width: 0
+    //       },
+    //       itemStyle: {
+    //         opacity: 0
+    //       },
+    //       smooth: true
+    //     }
+    //   ]
+    // })
   }
 }
 </script>

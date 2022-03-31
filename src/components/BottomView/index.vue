@@ -1,6 +1,6 @@
 <template>
   <div class="bottom-view">
-    <ve-line :data="chartData" />
+    <!-- <ve-line :data="chartData" /> -->
   </div>
 </template>
 
