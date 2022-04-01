@@ -3,7 +3,7 @@
     <div class="view">
       <el-card shadow="hover">
         <template v-slot:header>
-          <div class="title">关键词搜索</div>
+          <div class="title-wrapper">关键词搜索</div>
         </template>
         <template>
           <div class="chart-wrapper">
@@ -40,6 +40,9 @@
             </div>
           </div>
         </template>
+        <template>
+          <v-chart :options="getCategoryOptions()" />
+        </template>
       </el-card>
     </div>
   </div>
@@ -55,6 +58,25 @@ export default {
     }
   },
   methods: {
+    getCategoryOptions () {
+      return {
+        xAxis: {
+          type: 'category'
+        },
+        yAxis: {},
+        series: [
+          {
+            type: 'bar'
+          }
+        ],
+        grid: {
+          top: 0,
+          bottom: 0,
+          right: 0,
+          left: 0
+        }
+      }
+    },
     getSearchUserOptions () {
       return {
         xAxis: {},
@@ -100,8 +122,33 @@ export default {
 <style lang="scss" scoped>
 .bottom-view {
   display: flex;
+  margin-top: 20px;
   .view {
     flex: 1;
+    width: 50%;
+    box-sizing: border-box;
+    bo &:first-child {
+      padding: 0 10px 0 0;
+    }
+    &:last-child {
+      padding: 0 0 0 10px;
+    }
+    .title-wrapper {
+      display: flex;
+      align-items: center;
+      height: 60px;
+      box-sizing: border-box;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 0 0 0 20px;
+      .radio-wrapper {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 20px;
+      }
+    }
   }
 }
 </style>
