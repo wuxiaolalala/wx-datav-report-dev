@@ -40,4 +40,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.top-view {
+}
 </style>
